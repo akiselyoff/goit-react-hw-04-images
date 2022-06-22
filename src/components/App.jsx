@@ -19,6 +19,7 @@ export const App = () => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
+    if (!query) { return };
     setStatus('pending');
 
     

@@ -20,7 +20,7 @@ const Modal = ({ imgModal, closeModal }) => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('click', handleClick);
     };
-  });
+  },[closeModal]);
 
   return (
     <div className={s.Overlay}>
