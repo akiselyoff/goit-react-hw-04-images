@@ -29,6 +29,12 @@ export const App = () => {
           setGallery(prev => prev = [...prev, ...gallery.hits]);
           setTotal(gallery.total);
           setStatus('resolved');
+
+          setTimeout(()=>{window.scrollBy({
+            top: document.body.clientHeight,
+            behavior: 'smooth',
+          });},100)
+          
           
         })
         .catch(error => {
@@ -39,10 +45,7 @@ export const App = () => {
           
         });
     
-     window.scrollBy({
-      top: document.body.clientHeight,
-      behavior: 'smooth',
-     });
+     
     
   }, [query, page])
 
