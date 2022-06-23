@@ -88,14 +88,13 @@ export const App = () => {
     <>
         <Searchbar onSubmit={handleFormSubmit} />
         {status === 'idle' && <h1>Enter your query</h1>}
-        {status === 'pending' && <LoaderSpinner />}
+        {(status === 'pending' || status === 'resolved') && gallery.length > 0 && <ImageGallery gallery={gallery} onImageClick={onImageClick}/>}
 
-        {status === 'resolved' && (
-          <ImageGallery gallery={gallery} onImageClick={onImageClick} />
-        )}
+      
 
       {status === 'rejected' && <ImageGalleryError message={error.message} />}
       {status === 'resolved' && gallery.length === 0 && <h1>Your query not found</h1>}
+      {status === 'pending' && <LoaderSpinner/>}
         {status === 'resolved' &&
           gallery.length > 0 &&
           gallery.length < total && <Button onClick={handleLoadMore} />}
